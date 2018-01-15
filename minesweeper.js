@@ -23,34 +23,37 @@ function startGame () {
   // Don't remove this function call: it makes the game work!
   document.addEventListener('click', checkForWin);
   document.addEventListener('contextmenu', checkForWin);
-    
-     for (var i = 0; i < board.cells.length; i++); {
+  console.log("board: ", board);   // check that board is not undefined
+  console.log("board.cells: ", board.cells);  // check that board.cells is not undefined
+  for (var i = 0; i < board.cells.length; i++); {
+    console.log("i: ", i, "; board.cells[i]: ", board.cells[i]) // check that board.cells[i] is not undefined
     board.cells[i].surroundingMines = countSurroundingMines(board.cells[i]);}
   
     lib.initBoard()
      }
 
+     
+
+
+
+
 // Define this function to look for a win condition:
 //
 // 1. Are all of the cells that are NOT mines visible?
 // 2. Are all of the mines marked?
+
 function checkForWin () {
+ 
+  for (i = 0; i < board.cells.length; i++) {
   
-    var check = board.cells[i];
-    for (var i = 0; i < board.cells.length; i++) {
-    
-    if (isMine === true) {
-      return; 
-    }  
-    else if (isMarked === true) {
+    if (cell.isMine && !cell.isMarked) {
       return;
-    }  
-
-    else if (isMine && isMarked === true) {
-      return lib.displayMessage('You win!');
+    }    
+    else if (!cell.isMine && cell.isMarked) {
+      return;
+   }    
 }
-
-}
+return lib.displayMessage('You win!');
 }
 
 // Define this function to count the number of mines around the cell
@@ -62,12 +65,13 @@ function checkForWin () {
 // It will return cell objects in an array. You should loop through 
 // them, counting the number of times `cell.isMine` is true.
 
-function countSurroundingMines (cells) {
+function countSurroundingMines (cell) {
   console.log("cell: ", cell)
-  var surroundingCells = lib.getSurroundingCells(cells.row, cells.col);
+  var surroundingCells = lib.getSurroundingCells(cell.row, cell.col);
 
   var count = 0
   for ( var i = 0; i < surroundingCells.length; i++) {
+     cell.isMine = getSurroundingCells
      if (getSurroundingCells[i].isMine === true) {
        count++
      }
