@@ -4,13 +4,13 @@ document.addEventListener('DOMContentLoaded', startGame)
 var board = {
   cells: [
     {row: 0,col: 0, isMine: false, isMarked: false, hidden: true, surroundingMines: 2},
-    {row: 0,col: 1, isMine: false, isMarked: false, hidden: true, surroundingMines: 2},
+    {row: 0,col: 1, isMine: true, isMarked: false, hidden: true, surroundingMines: 2},
     {row: 0,col: 2, isMine: false, isMarked: false, hidden: true, surroundingMines: 2}, 
     {row: 1,col: 0, isMine: false, isMarked: false, hidden: true, surroundingMines: 2},
     {row: 1,col: 1, isMine: false, isMarked: false, hidden: true, surroundingMines: 2},
-    {row: 1,col: 2, isMine: false, isMarked: false, hidden: true, surroundingMines: 2},
+    {row: 1,col: 2, isMine: true, isMarked: false, hidden: true, surroundingMines: 2},
     {row: 2,col: 0, isMine: false, isMarked: false, hidden: true, surroundingMines: 2},
-    {row: 2,col: 1, isMine: false, isMarked: false, hidden: true, surroundingMines: 2},
+    {row: 2,col: 1, isMine: true, isMarked: false, hidden: true, surroundingMines: 2},
     {row: 2,col: 2, isMine: false, isMarked: false, hidden: true, surroundingMines: 2},
     
   ]
@@ -26,7 +26,7 @@ function startGame () {
   
   for (var i = 0; i < board.cells.length; i++) {
     
-    board.cells[i].surroundingMines = countSurroundingMines(board.cells[i]);
+    board.cells[i].surroundingMines = countSurroundingMines(board.cells[i])
   }
   
     lib.initBoard()
@@ -44,7 +44,7 @@ function startGame () {
 
 function checkForWin () {
  
-  for (i = 0; i < board.cells.length; i++) {
+  for (var i = 0; i < board.cells.length; i++) {
   
     if (cell.isMine && !cell.isMarked) {
       return;
@@ -71,7 +71,7 @@ function countSurroundingMines (cell) {
 
   var count = 0
   for ( var i = 0; i < surroundingCells.length; i++) {
-     cell.isMine = getSurroundingCells
+     
      if (getSurroundingCells[i].isMine === true) {
        count++
      }
@@ -79,3 +79,32 @@ function countSurroundingMines (cell) {
     return count;     
 
   }
+
+  /*
+  var surroundingCells = lib.getSurroundingCells(cell.row, cell.col);
+
+ var count = 0
+ for ( var i = 0; i < surroundingCells.length; i++) {
+    cell.isMine = getSurroundingCells !!!!!!! this should be surroundingCells and not getSurroundingCells I believe!!!!!!
+    if (getSurroundingCells[i].isMine === true) {
+      count++
+
+
+[6:41] 
+no sorry ignore my comment above
+
+
+[6:42] 
+you have an unecessary element in there
+
+
+[6:44] 
+It should be
+ var count = 0
+ for (var i = 0; i < surroundingCells.length; i++) {
+   if (surroundingCells[i].isMine === true) {
+     count++
+   }
+ }
+ return count;
+ */
