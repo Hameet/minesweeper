@@ -23,11 +23,11 @@ function startGame () {
   // Don't remove this function call: it makes the game work!
   document.addEventListener('click', checkForWin);
   document.addEventListener('contextmenu', checkForWin);
-  console.log("board: ", board);   // check that board is not undefined
-  console.log("board.cells: ", board.cells);  // check that board.cells is not undefined
-  for (var i = 0; i < board.cells.length; i++); {
-    console.log("i: ", i, "; board.cells[i]: ", board.cells[i]) // check that board.cells[i] is not undefined
-    board.cells[i].surroundingMines = countSurroundingMines(board.cells[i]);}
+  
+  for (var i = 0; i < board.cells.length; i++) {
+    
+    board.cells[i].surroundingMines = countSurroundingMines(board.cells[i]);
+  }
   
     lib.initBoard()
      }
