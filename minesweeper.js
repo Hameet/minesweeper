@@ -45,15 +45,15 @@ function startGame () {
 function checkForWin () {
  
   for (var i = 0; i < board.cells.length; i++) {
-  
-    if (cell.isMine && !cell.ishidden) {
+    var cell = board.cells[i];
+    if (cell.isMine && !cell.isMarked) {
       return;
     }    
-    else if (!cell.isMine && cell.isMarked) {
+    else if (!cell.isMine && cell.hidden) {
       return;
    }    
 }
-  lib.displayMessage('You win!');
+  lib.displayMessage('You win!')
 }
 
 // Define this function to count the number of mines around the cell
